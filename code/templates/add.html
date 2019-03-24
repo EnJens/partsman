@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12 text-center">
+        <h1 class="mt-5">Add new Parts</h1>
+        <p class="lead">Please provide vendor part number and quantity</p>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 text-center">
+        <form method="POST">
+            <div class="form-group">
+                <label for="vendor_id">Vendor Part number</label>
+                <input type="text" class="form-control inputs" name="vendor_id" id="vendor_id" aria-describedby="vendorHelp" placeholder="Vendor part number" autofocus>
+                <small id="vendorHelp" class="form-text text-muted">Vendor part number is e.g. Mouser part number</small>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="text" class="form-control inputs" name="quantity" id="quantity" value="">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script language="JavaScript">
+    $('.inputs').keydown(function (e) {
+        if (e.which === 13) {
+            var inputs= $('.inputs');
+            var index = inputs.index(this) + 1;
+
+            if (index < inputs.length) {
+                var next = inputs.eq(index);
+                e.preventDefault();
+                next.focus();
+            }
+        }
+    });
+</script>
+{% endblock %}
